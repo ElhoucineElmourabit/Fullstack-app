@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: product-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: product_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - product-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: product-phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - "8081:80"
+    networks:
+      - product-network
+
+volumes:
+  mysql_data:
+
+networks:
+  product-network:
