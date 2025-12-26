@@ -45,8 +45,11 @@ pipeline {
                             export DB_URL='jdbc:mysql://${RDS_LINK}:3306/products_db?createDatabaseIfNotExist=true'
                             export DB_USERNAME=${DB_USER}
                             export DB_PASSWORD='${DB_PASS}'
-                            docker-compose pull
-                            docker-compose up -d
+                            
+                            cd /home/ubuntu
+                            # CHANGED: Hyphen removed from docker compose commands
+                            docker compose pull
+                            docker compose up -d
                         "
                         """
                     }
