@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Backend') {
             steps {
-                dir('backend') {
+                dir('backend/backend') {
                     sh 'mvn clean package -DskipTests'
                     sh "docker build -t ${DOCKER_HUB_USER}/products-backend:latest ."
                 }
