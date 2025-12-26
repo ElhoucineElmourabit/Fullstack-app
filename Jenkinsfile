@@ -42,9 +42,9 @@ pipeline {
                         sh """
                         ssh -o StrictHostKeyChecking=no ubuntu@${APP_IP} "
                             export DOCKER_HUB_USER=${DOCKER_HUB_USER}
-                            export DB_URL=jdbc:mysql://${RDS_LINK}:3306/product_db
+                            export DB_URL='jdbc:mysql://${RDS_LINK}:3306/products_db?createDatabaseIfNotExist=true'
                             export DB_USERNAME=${DB_USER}
-                            export DB_PASSWORD=${DB_PASS}
+                            export DB_PASSWORD='${DB_PASS}'
                             docker-compose pull
                             docker-compose up -d
                         "
