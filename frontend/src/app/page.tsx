@@ -21,7 +21,7 @@ export default function Dashboard() {
         <header className="mb-12 flex justify-between items-end">
           <div>
             <h1 className="text-4xl font-extrabold tracking-tighter text-white">
-              Product <span className="text-blue-500">Management</span>
+              Product <span className="text-blue-500">Management V2</span>
             </h1>
             <p className="text-slate-500 font-mono text-sm tracking-widest uppercase mt-2">
               Product Management Interface
